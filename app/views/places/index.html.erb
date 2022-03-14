@@ -1,5 +1,6 @@
 <h1>Places</h1>
 
+<% if @current_user %>
 <p>
   <a href="/places/new" class = "btn btn-success">New Place</a>
 </p>
@@ -11,4 +12,7 @@
   <% end %>
 </ul>
 
+<% else %>
+  Login or sign up to view places!
+<% end %>
 
