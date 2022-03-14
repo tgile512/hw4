@@ -1,26 +1,29 @@
-<h1><%= @place.name %></h1>
+<div class = "row">
 
-<% if @current_user %>
-  <h2>My Posts</h2>
+  <div>
+    <h1> <%= "#{@place.name}"%></h1>
+    <a class = "btn btn-success mb-3" href="/posts/new?place_id=<%= @place.id %>">New Post</a>
+  </div>
+
   <% for post in @place.posts.where({user_id: @current_user.id}) %>
+  <div class = "col-md-4 col sm 6">
     <h3><%= post.title %></h3>
     <h4><%= post.posted_on %></h4>
     <% if post.uploaded_image.attached? %>
-        <img src="<%= url_for(post.uploaded_image) %>">
+        <img src="<%= url_for(post.uploaded_image) %>" class = "img-fluid">
     <% else %>
         <p> No Image Added</p>
     <% end %>
     <p><%= post.description %></p>
+  </div>
   <% end %>
 
-  <p>
-    <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
-  </p>
 
-  <p>
-    <a href="/places">Back to All Places</a>
-  </p>
 
-<% else %>
-  Login to view and add posts!
-<% end %>
+  <div class="mb-3">
+    <a class = "btn btn-success" href="/places">Back to All Places</a>
+  </div>
+
+
+
+</div>
